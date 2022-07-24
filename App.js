@@ -10,10 +10,12 @@ import SigninScreen from "./src/screens/SigninScreen";
 import TrackCreateScreen from "./src/screens/TrackCreateScreen";
 import TrackDetailScreen from "./src/screens/TrackDetailScreen";
 import TrackListScreen from "./src/screens/TrackListScreen";
+import LoadingScreen from "./src/screens/LoadingScreen";
 import { Provider as AuthProvider } from "./src/context/AuthContext";
 import { setNavigator } from "./src/navigationRef";
 
 const switchNavigator = createSwitchNavigator({
+  Loading: LoadingScreen, // fix glicth on transition between screens on check if user is logged in
   loginFlow: createStackNavigator({
     Signup: SignupScreen,
     Signin: SigninScreen,
