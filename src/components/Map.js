@@ -5,7 +5,7 @@ import { Context as LocationContext } from "../context/LocationContext";
 
 const Map = () => {
   const {
-    state: { currentLocation },
+    state: { currentLocation, locations },
   } = useContext(LocationContext);
 
   if (!currentLocation) {
@@ -45,11 +45,13 @@ const Map = () => {
         // Update map position se o user mexer no mapa (move ou zoom) ver as funcoes acima
       >
         <Circle
-        center={currentLocation.coords}
-        radius={25}
-        strokeColor="rgba(158, 158, 255, 1.0)"
-        fillColor="rgba(158, 158, 255, 0.3)"
+          center={currentLocation.coords}
+          radius={25}
+          strokeColor="rgba(158, 158, 255, 1.0)"
+          fillColor="rgba(158, 158, 255, 0.3)"
         />
+        <Polyline
+        coordinates={locations.map(loc=>loc.coords)}/>
       </MapView>
     </View>
   );
